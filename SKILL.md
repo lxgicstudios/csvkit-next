@@ -1,97 +1,103 @@
 ---
-name: CSV Toolkit CLI
-description: Transform, filter, merge, validate CSV files. Zero dependencies. Fast ETL operations from the command line. Free data processing tool.
-tags: [csv, data, transform, etl, filter, merge, cli, data-processing]
+name: CSVKit Next - Advanced CSV Toolkit
+description: Transform, filter, merge, validate, and analyze CSV files. Zero dependencies. Powerful CSV processing from command line. Free CLI tool.
 ---
 
-# CSV Toolkit CLI
+# CSVKit Next
 
-Swiss army knife for CSV files. Transform, filter, merge, validate.
+Swiss army knife for CSV files. Filter, transform, merge, validate, analyze.
 
-**Zero dependencies. Blazing fast. Just works.**
-
-## Quick Start
+## Installation
 
 ```bash
 npm install -g @lxgicstudios/csvkit-next
 ```
 
-```bash
-# View CSV with pretty formatting
-csvkit view data.csv
-
-# Filter rows
-csvkit filter data.csv "age > 25"
-
-# Select columns
-csvkit select data.csv name,email,phone
-```
-
-## What It Does
-
-### Transform
-- Add/remove/rename columns
-- Convert data types
-- Format dates
-- Calculate new columns
-
-### Filter
-- SQL-like WHERE clauses
-- Regex matching
-- Numeric comparisons
-- Null handling
-
-### Merge
-- Join CSV files (inner, left, right, outer)
-- Concatenate files
-- Deduplicate rows
-- Union operations
-
-### Validate
-- Schema validation
-- Type checking
-- Required fields
-- Custom rules
-
 ## Commands
 
-```bash
-# Merge CSVs
-csvkit merge file1.csv file2.csv -o combined.csv
-
-# Join on key
-csvkit join users.csv orders.csv --on user_id
-
-# Sort
-csvkit sort data.csv --by date --desc
-
-# Stats summary
-csvkit stats data.csv
-
-# Convert to JSON
-csvkit to-json data.csv -o data.json
-
-# Deduplicate
-csvkit dedup data.csv --on email
-```
-
-## Piping Support
+### Filter Rows
 
 ```bash
-# Chain operations
-cat data.csv | csvkit filter "status = 'active'" | csvkit select name,email
-
-# From other tools
-curl https://api.example.com/data.csv | csvkit stats
+csvkit filter data.csv age gt 30
+csvkit filter users.csv email contains @gmail
+csvkit filter sales.csv status eq completed
 ```
 
-## When to Use This
+Operators: eq, ne, gt, lt, gte, lte, contains, startswith, endswith, regex, empty, notempty
 
-- Data cleaning and preparation
-- ETL pipelines
-- Log analysis
-- Report generation
-- Quick data exploration
+### Transform Columns
+
+```bash
+csvkit transform data.csv "full_name=first+' '+last"
+csvkit transform prices.csv "total=price*quantity"
+csvkit transform users.csv "domain=email.split('@')[1]"
+```
+
+### Merge Files
+
+```bash
+csvkit merge users.csv orders.csv -o combined.csv
+```
+
+### Validate
+
+```bash
+csvkit validate data.csv
+csvkit validate data.csv schema.json
+```
+
+Schema example:
+```json
+{
+  "required": ["id", "email"],
+  "types": { "age": "number", "email": "email" }
+}
+```
+
+### Statistics
+
+```bash
+csvkit stats sales.csv
+```
+
+Shows: rows, columns, min/max/avg, unique values.
+
+### Other Commands
+
+```bash
+csvkit head data.csv 20          # First 20 rows
+csvkit tail data.csv 20          # Last 20 rows
+csvkit columns data.csv          # List columns
+csvkit sort data.csv price desc  # Sort
+csvkit unique data.csv category  # Unique values
+csvkit sample data.csv 50        # Random rows
+csvkit convert data.csv -t json  # To JSON
+```
+
+## Common Use Cases
+
+**Filter high-value orders:**
+```bash
+csvkit filter orders.csv total gt 1000 -o high_value.csv
+```
+
+**Add calculated column:**
+```bash
+csvkit transform sales.csv "profit=revenue-cost" -o with_profit.csv
+```
+
+**Quick data overview:**
+```bash
+csvkit stats large_dataset.csv
+```
+
+## Features
+
+- Zero dependencies
+- Fast streaming for large files
+- Expression-based transforms
+- Schema validation
+- Multiple output formats
 
 ---
 

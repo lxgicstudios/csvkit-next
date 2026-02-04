@@ -1,6 +1,6 @@
 {
   "name": "@lxgicstudios/csvkit-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced CSV toolkit. Transform, filter, merge, validate, and analyze CSV files. Zero dependencies.",
   "main": "src/index.js",
   "bin": {
@@ -10,16 +10,26 @@
     "test": "node test/test.js"
   },
   "keywords": [
+    "analysis",
+    "cli",
     "csv",
     "data",
-    "transform",
+    "data-processing",
+    "developer-tools",
+    "etl",
+    "excel",
+    "export",
     "filter",
+    "import",
     "merge",
-    "validate",
-    "cli",
-    "etl"
+    "npx",
+    "parse",
+    "spreadsheet",
+    "transform",
+    "tsv",
+    "validate"
   ],
-  "author": "LXGIC Studios <lxgicstudios@gmail.com>",
+  "author": "LXGIC Studios <hello@lxgicstudios.com> (https://lxgicstudios.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -29,7 +39,19 @@
   "bugs": {
     "url": "https://github.com/lxgicstudios/csvkit-next/issues"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/lxgicstudios"
+  },
   "engines": {
     "node": ">=16.0.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "bin",
+    "README.md"
+  ]
 }
